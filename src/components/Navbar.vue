@@ -1,7 +1,7 @@
 <template>
-    <div>
-        
-    </div>
+    <v-app-bar color="primary" dark class="Navbar" >
+        <span>TODO LIST</span>
+    </v-app-bar>
 </template>
 
 <script>

@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+
+*{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.Navbar{
+    span{
+        font-size: 30px;
+        font-weight: bold;
+    }
+}
+
+.card{
+    .time{direction: rtl;}
+    
+}
+
+.M-Red{border-left: 2px #F44336 solid !important;}
+.M-Blue{border-left: 2px #2196F3 solid !important;}
+.M-Green{border-left: 2px #4CAF50 solid !important;}
+.M-Yallow{border-left: 2px #FFEB3B solid !important;}
