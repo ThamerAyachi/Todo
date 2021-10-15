@@ -1,20 +1,19 @@
 <template >
-    <v-card class="card M-Green">
-
+    <v-card :class="`card ${ mark } my-3 ` ">
         <!-- Card Title -->
-        <v-card-title>Test</v-card-title>
+        <v-card-title>{{ title }}</v-card-title>
 
         <!-- Card Text -->
         <v-card-text>
             <div class="text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum tempora sunt numquam obcaecati quos, cupiditate nulla totam rem pariatur repellat velit odio! Nesciunt quos amet voluptas deleniti nostrum explicabo sapiente?
+                {{ description }}
             </div>
-            <div class="time">Time: 17:00</div>
+            <div class="time">Time for do it : {{ time }}</div>
         </v-card-text>
 
         <!-- Card Actions -->
-        <v-card-actions>
-            <v-btn class="primary mb-3 mx-4">donne</v-btn>
+        <v-card-actions dir="rtl">
+            <v-btn class="primary  mx-4" @click="deletTodo(id)">donne</v-btn>
         </v-card-actions>
     </v-card>
 </template>
@@ -22,7 +21,21 @@
 export default {
     data() {
         return {
-            
+            Todos: JSON.parse(localStorage.getItem("Todos")),
+            Todo: "",
+        }
+    },
+    props: [
+        "title",
+        "description",
+        "time",
+        "mark",
+        "id"
+    ],
+    methods: {
+        deletTodo(id){
+            let NewTodos = this.Todos.filter(todo => todo.id != id)
+            localStorage.setItem('Todos', JSON.stringify(NewTodos))
         }
     },
 }

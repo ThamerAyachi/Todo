@@ -5,7 +5,13 @@
         <v-container>
           <v-btn block class="primary my-3" @click="Oform()">{{ Tform }}</v-btn>
           <Form v-if="form"/>
-          <Card/>
+          <Card v-for="Todo in Todos" :key="Todo.id"
+          :title="Todo.title"
+          :description="Todo.description"
+          :time="Todo.time"
+          :mark="Todo.mark"
+          :id="Todo.id"
+          />
         </v-container>
     </v-main>
   </v-app>
@@ -27,7 +33,8 @@ export default {
 
   data: () => ({
     form:false,
-    Tform:"Open Form"
+    Tform:"Open Form",
+    Todos: JSON.parse(localStorage.getItem("Todos"))
   }),
 
   methods: {
@@ -40,6 +47,18 @@ export default {
       }
       this.form = !this.form
     }
+  },
+  created() {
+    
+    // Add default data in local storage
+    if (this.Todos == null){
+      localStorage.setItem("Todos", JSON.stringify([]))
+      localStorage.setItem("conter", 1)
+    }
+
+     document.body.addEventListener('click', () => {
+       this.Todos = JSON.parse(localStorage.getItem("Todos"))
+     })
   },
 };
 </script>
